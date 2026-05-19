@@ -18,7 +18,7 @@ El sistema utiliza `localStorage` para almacenar la sesión del usuario y persis
 
 ---
 ## Enlace al video:
-
+(https://youtu.be/gzjVAge74LM)
 
 ---
 ## Funcionalidades implementadas
