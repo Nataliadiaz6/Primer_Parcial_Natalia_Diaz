@@ -1,15 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Food Store - Inicio</title>
 </head>
 
 <body>
-    <h1>Hola desde el cliente</h1>
-    <button id="logoutButton">Logout</button>
+    <header>
+        <h1 class="logo">Food Store</h1>
+        <button id="logoutButton" class="btn-logout">Cerrar Sesión</button>
+        <button id="cartButton"> Ver carrito </button>
+    </header>
+
+    <main>
+        <aside>
+            <section>
+                <h2>Categorías</h2>
+                <ul id="lista-categorias">
+                    </ul>
+            </section>
+        </aside>
+
+        <section class="content">
+            <h2>Nuestros Productos</h2>
+            
+            <div class="search-container">
+                <input type="text" id="inputBusqueda" placeholder="¿Qué quieres comer hoy? (Buscar por nombre)">
+            </div>
+
+            <div id="contenedor-productos"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Food Store. Proyecto Programación III.</p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
     <script type="module" src="./home.ts"></script>
 </body>
 

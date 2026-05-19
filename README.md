@@ -1,83 +1,140 @@
-# Proyecto: Protección de Rutas (Educativo)
+# Food Store
 
-## ✍️ Descripción
+## Descripción del proyecto
 
-Este es un proyecto de demostración creado con fines educativos para ilustrar un mecanismo básico de protección de rutas en el lado del cliente (frontend) utilizando **Vite** y **TypeScript**.
+Food Store es una aplicación frontend desarrollada como parte de la materia Programación III.
+Esta instancia esta dedicada a la estrega del primer parcial de dicha materia.
+El proyecto consiste en un catálogo de productos de comida donde los usuarios pueden visualizar productos, filtrarlos por categorías, buscarlos por nombre y agregarlos a un carrito de compras.
 
-El objetivo es mostrar cómo se puede restringir el acceso a ciertas páginas según el rol de un usuario (por ejemplo, `ADMIN` o `CLIENT`).
+La aplicación fue desarrollada utilizando:
+
+* HTML5
+* CSS3
+* JavaScript
+* TypeScript
+* Vite
+
+El sistema utiliza `localStorage` para almacenar la sesión del usuario y persistir los datos del carrito de compras.
+
+---
+## Enlace al video:
+
+
+---
+## Funcionalidades implementadas
+
+* Registro e inicio de sesión
+* Protección de rutas según el rol del usuario
+* Catálogo dinámico de productos
+* Búsqueda de productos por nombre
+* Filtrado de productos por categorías
+* Carrito de compras con persistencia en localStorage
+* Cálculo automático del total del carrito
+* Eliminación de productos del carrito
+* Vaciado completo del carrito
+* Navegación entre páginas
 
 ---
 
-## ⚠️ ¡Importante! Nivel de Seguridad
-
-La protección de rutas implementada en este proyecto **NO ES SEGURA** y no debe utilizarse en un entorno de producción.
-
-- **Razón**: La lógica de autenticación se basa en datos guardados en `localStorage` en el navegador del usuario.
-- **Riesgo**: Cualquier usuario con conocimientos técnicos básicos puede abrir las herramientas de desarrollador del navegador para inspeccionar, modificar o eliminar los datos de `localStorage`, obteniendo así acceso no autorizado a rutas protegidas.
-
-Este enfoque es útil únicamente para fines de aprendizaje y para prototipos de bajo riesgo. La seguridad real debe implementarse en el **backend**.
-
----
-
-## 🚀 Instalación y Uso
-
-Se recomienda usar `pnpm` como gestor de paquetes para mayor eficiencia en el manejo de dependencias.
-
-### 1. Instalar pnpm
-
-Si no tienes `pnpm` instalado, puedes hacerlo fácilmente a través de `npm` (que viene con Node.js) ejecutando el siguiente comando en tu terminal:
+## Estructura del proyecto
 
 ```bash
-npm install -g pnpm
+src/
+├── pages/
+│   ├── auth/
+│   ├── admin/
+│   └── client/
+│       ├── home/
+│       └── cart/
+├── types/
+├── utils/
+├── assets/
+└── main.ts
 ```
 
-### 2. Instalar Dependencias del Proyecto
+---
 
-Una vez en la carpeta raíz del proyecto, instala las dependencias necesarias con `pnpm`:
+## Instalación y ejecución
+
+### 1. Clonar el repositorio
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+```
+
+### 2. Ingresar al proyecto
+
+```bash
+cd proteger_rutas
+```
+
+### 3. Instalar dependencias
 
 ```bash
 pnpm install
 ```
 
-### 3. Ejecutar el Proyecto
+Si `pnpm` no está instalado:
 
-Para iniciar el servidor de desarrollo de Vite, ejecuta:
+```bash
+npm install -g pnpm
+```
+
+### 4. Ejecutar el servidor de desarrollo
 
 ```bash
 pnpm dev
 ```
 
-La aplicación estará disponible en la URL que aparezca en la terminal (generalmente `http://localhost:5173`).
+El proyecto se ejecutará en:
+
+```bash
+http://localhost:5173
+```
 
 ---
 
-## ⚙️ ¿Cómo Funciona la Protección de Rutas?
+## Usuarios de prueba
 
-El mecanismo es simple y se gestiona desde el código TypeScript en la carpeta `src/utils`:
+### Administrador
 
-1.  **Inicio de Sesión**: Cuando un usuario se "loguea", su información (incluido su rol) se guarda como un string JSON en `localStorage`.
-2.  **Carga de Página Protegida**: Cada vez que se intenta cargar una página protegida (ej. la página de Administrador), se ejecuta un script de verificación (`checkAuhtUser` en `src/utils/auth.ts`).
-3.  **Verificación**: El script comprueba:
-    - Si existe un usuario en `localStorage`. Si no, redirige al login.
-    - Si el rol del usuario guardado coincide con el rol requerido para acceder a esa página. Si no coincide, lo redirige a una página de acceso denegado o a su "home" correspondiente.
-4.  **Cierre de Sesión (Logout)**: Al cerrar sesión, la información del usuario se elimina de `localStorage`.
+```txt
+Email: admin@admin.com
+Password: 1234
+```
+
+### Cliente
+
+El usuario cliente puede registrarse desde la pantalla de registro.
 
 ---
 
-## 📁 Estructura del Proyecto
+## Persistencia de datos
 
-```
-/
-├── src/
-│   ├── pages/                # Contiene las páginas de la aplicación
-│   │   ├── admin/            # Páginas solo para administradores
-│   │   ├── auth/             # Páginas de autenticación (login, registro)
-│   │   └── client/           # Páginas solo para clientes
-│   ├── types/                # Define las interfaces y tipos (IUser, Rol)
-│   └── utils/                # Lógica reutilizable
-│       ├── auth.ts           # Función principal de verificación de rol y sesión
-│       ├── localStorage.ts   # Funciones para leer/escribir en localStorage
-│       └── navigate.ts       # Función para redirigir al usuario
-├── package.json              # Dependencias y scripts
-└── README.md                 # Este archivo
-```
+La aplicación utiliza `localStorage` para almacenar:
+
+* Usuarios registrados
+* Sesión activa
+* Carrito de compras
+
+---
+
+## Dificultades encontradas
+
+Durante el desarrollo surgieron algunas dificultades relacionadas principalmente con la organización del proyecto y el manejo de TypeScript.
+
+Uno de los problemas fue comprender cómo estructurar correctamente los tipos (`Product`, `Category`, `CartItem`) y relacionarlos entre sí. En el material teórico se explicaban conceptos básicos, pero no había muchos ejemplos completos aplicados a proyectos reales, por lo que fue necesario investigar y realizar pruebas hasta lograr una estructura funcional.
+
+También hubo dificultades al trabajar con el renderizado dinámico del DOM, especialmente al implementar los filtros por categoría y la búsqueda de productos en tiempo real. En algunos casos los eventos no funcionaban correctamente porque los elementos eran creados dinámicamente desde TypeScript.
+
+Otra dificultad fue configurar correctamente las rutas y páginas dentro de `vite.config.ts`, ya que si una página no se registraba correctamente, no podía navegarse dentro del proyecto.
+
+Estos problemas fueron resolviéndose mediante pruebas, reorganización del código en módulos reutilizables y separando responsabilidades en distintos archivos para mantener una mejor estructura del proyecto.
+
+---
+
+## Autor
+
+Natalia Diaz
+Tecnicatura Universitaria en Programación a Distancia
+Programación III – 2026

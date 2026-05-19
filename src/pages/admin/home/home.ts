@@ -1,19 +1,11 @@
-import { checkAuhtUser, logout } from "../../../utils/auth";
+import { logout } from "../../../utils/auth";
 
-const buttonLogout = document.getElementById(
-  "logoutButton"
-) as HTMLButtonElement;
-buttonLogout?.addEventListener("click", () => {
-  logout();
-});
+// Seleccionamos el botón de cerrar sesión
+const buttonLogout = document.getElementById("logoutButton") as HTMLButtonElement;
 
-
-const initPage = () => {
-  console.log("inicio de pagina");
-  checkAuhtUser(
-    "/src/pages/auth/login/login.html",
-    "/src/pages/client/home/home.html",
-    "admin"
-  );
-};
-initPage();
+// Agregamos el evento de escucha
+if (buttonLogout) {
+    buttonLogout.addEventListener("click", () => {
+        logout(); // Ejecuta la limpieza de localStorage y redirección [cite: 393]
+    });
+}

@@ -1,0 +1,140 @@
+
+/* variables definidas */
+:root {
+	--color-primario: #ff6347;
+	--color-fondo: #f0f0f0;
+	--color-texto: #333;
+	--color-blanco: #fff;
+	--color-borde: #ddd;
+	--color-focus: #ff4500;
+}
+/*reset basico*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/*body*/
+body {
+	font-family: Arial, sans-serif; /*tipografia*/
+	background-color: var(--color-fondo); /*fondo*/
+	color: var(--color-texto);
+	padding: 20px; /*espacio interno*/
+}
+/*header*/
+header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.logo {
+	text-transform: uppercase; /*mayusculas*/
+	color: var(--color-primario);
+	margin-bottom: 5px;
+}
+/*tamaño y alineacion del h2*/
+h2 {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+/*layout*/
+main {
+	display: flex;/*elementos en fila*/
+	gap: 20px;/*espacio entre elementos*/
+	max-width: 1200px;
+	margin: 0 auto;/*centrado*/
+}
+.content {
+	flex: 1;
+}
+/*categorias*/
+aside {
+	width: 200px;
+	background-color: var(--color-blanco);
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#lista-categorias li {
+    cursor: pointer;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+#lista-categorias li:hover {
+    color: red;
+}
+
+#lista-categorias a {
+	text-decoration: none;
+	color: var(--color-texto);
+	font-weight: bold;
+}
+/*efecto cuando pasamos el mouse*/
+#lista-categorias a:hover {
+	color: var(--color-primario);
+}
+/*productos*/
+#contenedor-productos {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+
+}
+/*tarjeta de producto*/
+.producto {
+	background-color: var(--color-blanco);
+	border: 1px solid var(--color-borde);
+	border-radius: 10px;
+	padding: 15px;
+	text-align: center;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 300px;
+}
+
+/*hover*//*se agranda al pasar el mouse*/
+.producto:hover {
+	transform: scale(1.03);
+	box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+/*imagenes*/
+.producto img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover; /*para que no se deforme*/
+	border-radius: 8px;
+}
+/*nombres*/
+.producto h3 {
+	margin: 10px 0;
+}
+/*descripciones*/
+.producto p {
+	font-size: 0.9rem;
+	color: var(--color-texto);
+}
+/*destaca los precios*/
+.producto span {
+	display: block;
+	margin: 10px 0;
+	font-weight: bold;
+	color: var(--color-primario);
+}
+/*boton*/
+button {
+	background-color: var(--color-primario);
+	color: var(--color-blanco);
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	width: 100%;
+}
+/*cambia de color cuando pasamos mouse*/
+button:hover {
+	background-color: var(--color-focus);
+}
