@@ -94,21 +94,6 @@ http://localhost:5173
 
 ---
 
-## Usuarios de prueba
-
-### Administrador
-
-```txt
-Email: admin@admin.com
-Password: 1234
-```
-
-### Cliente
-
-El usuario cliente puede registrarse desde la pantalla de registro.
-
----
-
 ## Persistencia de datos
 
 La aplicación utiliza `localStorage` para almacenar:
